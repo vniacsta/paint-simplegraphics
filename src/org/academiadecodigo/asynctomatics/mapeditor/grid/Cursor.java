@@ -4,13 +4,6 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Cursor extends Cell {
 
-    public enum Direction {
-        RIGHT,
-        LEFT,
-        DOWN,
-        UP;
-    }
-
     // constructor
     public Cursor() {
         super(1, 1);
@@ -19,22 +12,30 @@ public class Cursor extends Cell {
     }
 
     public void moveRight() {
-        col++;
-        square.translate(Grid.CELLSIZE, 0);
+        if (col < Grid.numberCols -1) {
+            col++;
+            square.translate(Grid.CELLSIZE, 0);
+        }
     }
 
     public void moveLeft() {
-        col--;
-        square.translate(-Grid.CELLSIZE, 0);
+        if (col > 0) {
+            col--;
+            square.translate(-Grid.CELLSIZE, 0);
+        }
     }
 
     public void moveDown() {
-        row++;
-        square.translate(0, Grid.CELLSIZE);
+        if (row < Grid.numberRows -1) {
+            row++;
+            square.translate(0, Grid.CELLSIZE);
+        }
     }
 
     public void moveUp() {
-        row--;
-        square.translate(0, -Grid.CELLSIZE);
+        if (row > 0) {
+            row--;
+            square.translate(0, -Grid.CELLSIZE);
+        }
     }
 }

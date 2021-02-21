@@ -1,5 +1,6 @@
 package org.academiadecodigo.asynctomatics.mapeditor;
 
+import org.academiadecodigo.asynctomatics.mapeditor.grid.Cell;
 import org.academiadecodigo.asynctomatics.mapeditor.grid.Cursor;
 import org.academiadecodigo.asynctomatics.mapeditor.grid.Grid;
 import org.academiadecodigo.asynctomatics.mapeditor.utils.KeyboardListener;
@@ -9,33 +10,29 @@ public class MapEditor {
     // fields
     private Grid grid;
     private Cursor cursor;
-    private KeyboardListener keyboardListener;
-    private boolean painting;
 
     // constructor
-    public MapEditor(int cols, int rows) {
-        grid = new Grid(cols, rows);
+    public MapEditor(int numberCols, int numberRows) {
+
+        grid = new Grid(numberCols, numberRows);
         cursor = new Cursor();
-        keyboardListener = new KeyboardListener(cursor, this);
-        painting = false;
+        new KeyboardListener(cursor, this);
     }
 
     public void paint() {
-        if ()
+
+        // get cell to check if it is painted or not and give implementation
+        Cell cell = grid.getCell(cursor.getCol(), cursor.getRow());
+
+        if (cell.isPainted()) {
+            cell.delete();
+        } else {
+            cell.paint();
+        }
     }
 
-    public void delete() {
-
-    }
-
+    // clear grid
     public void clearGrid() {
-
-    }
-
-    // setters
-    public void setPainting(boolean painting) {
-        this.painting = painting;
+        grid.clear();
     }
 }
-
-

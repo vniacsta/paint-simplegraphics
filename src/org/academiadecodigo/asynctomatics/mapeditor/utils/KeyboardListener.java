@@ -11,31 +11,18 @@ public class KeyboardListener implements KeyboardHandler {
 
     // fields
     private Cursor cursor;
-    private MapEditor game;
+    private MapEditor map;
 
     // constructor
-    public KeyboardListener(Cursor cursor, MapEditor game) {
+    public KeyboardListener(Cursor cursor, MapEditor map) {
         this.cursor = cursor;
-        this.game = game;
+        this.map = map;
         setup();
     }
 
     public void setup() {
 
         Keyboard keyboard = new Keyboard(this);
-
-//        KeyboardEvent[] events = new KeyboardEvent[10];
-//
-//        for (KeyboardEvent event : events) {
-//            event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-//
-//            switch (event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED)) {
-//                case event.KEY_RIGHT():
-//                    return new KeyboardEvent();
-//
-//
-//            }
-//        }
 
         KeyboardEvent right = new KeyboardEvent();
         right.setKey(KeyboardEvent.KEY_RIGHT);
@@ -62,13 +49,8 @@ public class KeyboardListener implements KeyboardHandler {
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(space);
 
-        KeyboardEvent xKey = new KeyboardEvent();
-        xKey.setKey(KeyboardEvent.KEY_X);
-        xKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(xKey);
-
         KeyboardEvent cKey = new KeyboardEvent();
-        cKey.setKey(KeyboardEvent.KEY_M);
+        cKey.setKey(KeyboardEvent.KEY_C);
         cKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(cKey);
     }
@@ -91,20 +73,15 @@ public class KeyboardListener implements KeyboardHandler {
                 cursor.moveUp();
                 break;
             case KeyboardEvent.KEY_SPACE:
-                game.setPainting(true);
-                cursor.paint();
+                map.paint();
                 break;
             case KeyboardEvent.KEY_C:
-                game.clearGrid();
+                map.clearGrid();
                 break;
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            game.setPainting(false);
-        }
     }
 }

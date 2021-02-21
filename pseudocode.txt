@@ -1,5 +1,0 @@
-Mapeditor is my game class - where I call the
-methods
-
-Cursor is a Cell
-But my Grid will be responsible for

@@ -14,14 +14,14 @@ public class Cell {
     public Cell(int col, int row) {
         this.col = col;
         this.row = row;
-        painted = false;
         square = new Rectangle(col * Grid.CELLSIZE + Grid.PADDING,
-                row * Grid.CELLSIZE + Grid.PADDING, Grid.CELLSIZE,
+                row * Grid.CELLSIZE + Grid.PADDING,
+                Grid.CELLSIZE,
                 Grid.CELLSIZE);
         square.draw();
+        painted = false;
     }
 
-    // methods that Cell is responsible for: paint and delete
     public void paint() {
         painted = true;
         square.fill();
